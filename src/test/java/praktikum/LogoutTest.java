@@ -1,6 +1,6 @@
 package praktikum;
 
-import com.codeborne.selenide.Configuration;
+
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
@@ -11,13 +11,9 @@ import pages.ProfilePage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.Assert.assertEquals;
+import static constant.Constant.*;
 
 public class LogoutTest {
-
-    final String DEFAULT_EMAIL = "test-data@yandex.ru";
-    final String DEFAULT_PASSWORD = "password";
-    final String URL = "https://stellarburgers.nomoreparties.site/";
-    final String LOGIN_URL = "https://stellarburgers.nomoreparties.site/login";
 
     MainPage mainPage;
     LoginPage loginPage;
@@ -25,7 +21,6 @@ public class LogoutTest {
 
     @Before
     public void openMainPage() {
-        //Configuration.startMaximized = true;
         mainPage = open(URL, MainPage.class);
     }
 

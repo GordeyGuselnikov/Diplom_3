@@ -1,7 +1,6 @@
 package praktikum;
 
 import client.LoginClient;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
@@ -21,6 +20,7 @@ import java.util.Random;
 import static com.codeborne.selenide.Selenide.open;
 import static org.apache.hc.core5.http.HttpStatus.SC_ACCEPTED;
 import static org.junit.Assert.assertEquals;
+import static constant.Constant.*;
 
 public class RegistrationTest {
 
@@ -33,9 +33,6 @@ public class RegistrationTest {
     private int randomMailCompany = new Random().nextInt(mailCompanies.length);
     private String email = randomString + "@" + mailCompanies[randomMailCompany] + ".ru";
 
-    private final static String INVALID_PASSWORD = "Некорректный пароль";
-    private final static boolean EXPECTED_RESULT_TRUE = true;
-
     final String URL = "https://stellarburgers.nomoreparties.site/";
     final String LOGIN_URL = "https://stellarburgers.nomoreparties.site/login";
 
@@ -45,7 +42,6 @@ public class RegistrationTest {
 
     @Before
     public void openMainPage() {
-        //Configuration.startMaximized = true;
         mainPage = open(URL, MainPage.class);
     }
 

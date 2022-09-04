@@ -1,25 +1,19 @@
 package praktikum;
 
-import com.codeborne.selenide.Configuration;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
 import pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.open;
+import static constant.Constant.*;
 
 public class ConstructorTest {
 
-    private final static String BUNS = "Булки";
-    private final static String SAUCES = "Соусы";
-    private final static String FILLINGS = "Начинки";
-
     MainPage mainPage;
-    final String URL = "https://stellarburgers.nomoreparties.site/";
 
     @Before
     public void openMainPage() {
-       //Configuration.startMaximized = true;
         mainPage = open(URL, MainPage.class);
     }
 
