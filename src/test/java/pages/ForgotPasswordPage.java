@@ -3,16 +3,21 @@ package pages;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byClassName;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ForgotPasswordPage {
 
     // локатор ссылки Войти
-    private SelenideElement loginText = $(byClassName("Auth_link__1fOlj"));
+    @FindBy(how = How.CLASS_NAME, using = "Auth_link__1fOlj")
+    private SelenideElement loginText;
+
+    @FindBy(how = How.XPATH, xpath = "//div[@id='root']/div/main/div/h2")
+    private SelenideElement passwordRecoveryText;
 
     @Step("Нажать Войти")
     public LoginPage clickLogin() {
@@ -24,6 +29,6 @@ public class ForgotPasswordPage {
 
     @Step("Ожидание загрузки страницы")
     public void waitForLoadForgotPasswordPage() {
-        $(byText("Восстановление пароля")).shouldBe(visible);
+        passwordRecoveryText.shouldBe(visible);
     }
 }

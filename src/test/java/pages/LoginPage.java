@@ -4,6 +4,8 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byClassName;
@@ -14,13 +16,16 @@ import static com.codeborne.selenide.Selenide.$$;
 public class LoginPage {
 
     // локатор инпутов Email и Пароль
-    private ElementsCollection inputs = $$(byClassName("input__textfield"));
+    @FindBy(how = How.CLASS_NAME, using = "input__textfield")
+    private ElementsCollection inputs;
 
     // локатор кнопки Войти
-    private SelenideElement loginButton = $(byClassName("button_button__33qZ0"));
+    @FindBy(how = How.CLASS_NAME, using = "button_button__33qZ0")
+    private SelenideElement loginButton;
 
     // локатор ссылок Зарегистрироваться и Восстановить пароль
-    private ElementsCollection linkText = $$(byClassName("Auth_link__1fOlj"));
+    @FindBy(how = How.CLASS_NAME, using = "Auth_link__1fOlj")
+    private ElementsCollection linkText;
 
     @Step("Ввести email")
     public void setEmail(String email) {

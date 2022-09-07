@@ -1,6 +1,5 @@
 package praktikum;
 
-
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;

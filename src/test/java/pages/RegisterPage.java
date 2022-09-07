@@ -4,6 +4,8 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
@@ -15,16 +17,20 @@ import static com.codeborne.selenide.Selenide.$$;
 public class RegisterPage {
 
     // локатор полей Имя, Email, Пароль
-    private ElementsCollection inputs = $$(byClassName("input__textfield"));
+    @FindBy(how = How.CLASS_NAME, using = "input__textfield")
+    private ElementsCollection inputs;
 
     // локатор кнопки Зарегистрироваться
-    private SelenideElement registerButton = $(byClassName("button_button__33qZ0"));
+    @FindBy(how = How.CLASS_NAME, using = "button_button__33qZ0")
+    private SelenideElement registerButton;
 
     // локатор поля Некорректный пароль
-    private SelenideElement invalidPasswordInput = $(byClassName("input__error"));
+    @FindBy(how = How.CLASS_NAME, using = "input__error")
+    private SelenideElement invalidPasswordInput;
 
     // локатор linkText Войти
-    private SelenideElement loginText = $(byClassName("Auth_link__1fOlj"));
+    @FindBy(how = How.CLASS_NAME, using = "Auth_link__1fOlj")
+    private SelenideElement loginText;
 
     @Step("Ввести Имя")
     public void setName(String inputName) {

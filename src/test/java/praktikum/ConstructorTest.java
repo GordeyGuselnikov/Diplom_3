@@ -7,6 +7,7 @@ import pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static constant.Constant.*;
+import static org.junit.Assert.assertEquals;
 
 public class ConstructorTest {
 
@@ -22,20 +23,23 @@ public class ConstructorTest {
     public void checkOpenBunsTab() {
         mainPage.clickSaucesTab();
         mainPage.clickBunsTab();
-        mainPage.compareText(BUNS);
+        String currentTab = mainPage.findSelectedSection().getText();
+        assertEquals(BUNS, currentTab);
     }
 
     @Test
     @DisplayName("Переход к разделу соусы")
     public void checkOpenSaucesTab() {
         mainPage.clickSaucesTab();
-        mainPage.compareText(SAUCES);
+        String currentTab = mainPage.findSelectedSection().getText();
+        assertEquals(SAUCES, currentTab);
     }
 
     @Test
     @DisplayName("Переход к разделу начинки")
     public void checkOpenFillingsTab() {
         mainPage.clickFillingsTab();
-        mainPage.compareText(FILLINGS);
+        String currentTab = mainPage.findSelectedSection().getText();
+        assertEquals(FILLINGS, currentTab);
     }
 }

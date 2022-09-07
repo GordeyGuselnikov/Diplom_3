@@ -11,8 +11,6 @@ import static com.codeborne.selenide.Selenide.open;
 import static constant.Constant.*;
 import static org.junit.Assert.assertEquals;
 
-
-
 public class LoginTest {
 
     MainPage mainPage;

@@ -3,6 +3,8 @@ package pages;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byClassName;
@@ -12,13 +14,16 @@ import static com.codeborne.selenide.Selenide.$;
 public class ProfilePage {
 
     // локатор кнопки Выход
-    private SelenideElement exitButton = $(byClassName("Account_button__14Yp3"));
+    @FindBy(how = How.CLASS_NAME, using = "Account_button__14Yp3")
+    private SelenideElement exitButton;
 
     // локатор кнопки Конструктор
-    private SelenideElement ConstructorLinkText = $(byClassName("AppHeader_header__linkText__3q_va"));
+    @FindBy(how = How.CLASS_NAME, using = "AppHeader_header__linkText__3q_va")
+    private SelenideElement ConstructorLinkText;
 
     // локатор логотипа Stellar Burgers
-    private SelenideElement StellarBurgersLogo = $(byClassName("AppHeader_header__logo__2D0X2"));
+    @FindBy(how = How.CLASS_NAME, using = "AppHeader_header__logo__2D0X2")
+    private SelenideElement StellarBurgersLogo;
 
     @Step("Нажать Выйти")
     public LoginPage clickLogOut() {

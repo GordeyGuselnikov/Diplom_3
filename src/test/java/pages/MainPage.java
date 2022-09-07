@@ -4,27 +4,32 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byClassName;
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class MainPage {
 
     // локатор кнопок в шапке
-    private ElementsCollection headerButtons = $$(byClassName("AppHeader_header__linkText__3q_va"));
+    @FindBy(how = How.CLASS_NAME, using = "AppHeader_header__linkText__3q_va")
+    private ElementsCollection headerButtons;
 
     // локатор кнопки Войти в аккаунт
-    private SelenideElement loginButton = $(byClassName("button_button__33qZ0"));
+    @FindBy(how = How.CLASS_NAME, using = "button_button__33qZ0")
+    private SelenideElement loginButton;
 
     // локатор табов Булки, Соусы, Начинки
-    private ElementsCollection tabs = $$(byClassName("tab_tab__1SPyG"));
+    @FindBy(how = How.CLASS_NAME, using = "tab_tab__1SPyG")
+    private ElementsCollection tabs;
 
     // локатор текущего таба
-    private SelenideElement currentTab = $(byClassName("tab_tab_type_current__2BEPc"));
+    @FindBy(how = How.CLASS_NAME, using = "tab_tab_type_current__2BEPc")
+    private SelenideElement currentTab;
 
     @Step("Нажать Войти в аккаунт")
     public LoginPage clickLogInToAccountButton() {
@@ -65,9 +70,9 @@ public class MainPage {
         tabs.get(2).click();
     }
 
-    @Step("Сравнить текст с ожидаемым")
-    public void compareText(String expectedText) {
-        currentTab.shouldHave(exactText(expectedText));
+    @Step("Определить выбранную секцию")
+    public SelenideElement findSelectedSection(){
+        return $(byCssSelector(".tab_tab_type_current__2BEPc>span"));
     }
 
     @Step("Ожидание загрузки страницы")
